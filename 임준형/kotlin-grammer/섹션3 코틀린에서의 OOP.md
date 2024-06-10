@@ -96,3 +96,64 @@ val uppercaseName: String
 
 open 역할: override를 열어준다
 
+## 11강 코틀린에서 접근 제어를 다루는 방법
+
+### 자바의 접근 제어자
+
+| 접근 제어자  | 설명                                          |
+|--------------|---------------------------------------------|
+| `public`     | 모든 곳에서 접근 가능                        |
+| `protected`  | 같은 패키지 또는 하위 클래스에서만 접근 가능  |
+| `default`    | 같은 패키지에서만 접근 가능                  |
+| `private`    | 선언된 클래스 내에서만 접근 가능             |
+
+### 코틀린의 접근 제어자
+
+| 접근 제어자  | 설명                                           |
+|--------------|----------------------------------------------|
+| `public`     | 모든 곳에서 접근 가능                                 |
+| `protected`  | 선언된 클래스 또는 하위 클래스에서만 접근 가능 (같은 패키지가 빠졌다고 생각) |
+| `internal`   | 같은 모듈에서만 접근 가능                               |
+| `private`    | 선언된 클래스 내에서만 접근 가능                           |
+
+### Util Method
+
+#### Java
+추상 클래스로 생성 후 생성자를 막아 인스턴스화 할 수 없게하고, 메서드를 만들어 사용
+
+```java
+public abstract class JavaStringUtils {
+
+    public JavaStringUtils() {
+    }
+
+    public boolean isDirectoryPath(String path) {
+        return path.endsWith("/");
+    }
+
+    public static void main(String[] args) {
+        StringUtilsKt.isDirectoryPath("/");
+    }
+}
+```
+#### Kotlin
+그냥 파일에 선언 후 import하면 끝
+```kotlin
+// StringUtils.kt
+package lec11
+
+fun isDirectoryPath(path: String): Boolean {
+    return path.endsWith("/")
+}
+```
+
+```kotlin
+// Main Class
+package lec11
+
+class Lec11Main {
+    fun main() {
+        isDirectoryPath("/")
+    }
+}
+```
