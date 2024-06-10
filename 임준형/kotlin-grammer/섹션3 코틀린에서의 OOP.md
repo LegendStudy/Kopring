@@ -84,3 +84,15 @@ val uppercaseName: String
     get() = this.name.uppercase()   
 ```
 
+## 10강 코틀린에서 상속을 다루는 방법
+
+추상 클래스를 상속할 때는 문제가 없지만 일반 클래스를 상속할 때는 `class`에 `open`을 꼭 붙여줘야 함
+
+오버라이드를 할 때 자바에서는 `@Override`를 사용했지만, Kotlin에선 메서드 키워드에 `override`를 사용함
+
+상위 클래스에서 정의한 필드의 getter를 오버라이딩 하고 싶으면 상위 클래스의 필드에 open을 붙여줘야하는데,, 그냥 안하는게 좋음
+
+상위 클래스를 설계할 때 생성자 또는 초기화 블록에 사용되는 프로퍼티는 open을 피해야 함
+
+open 역할: override를 열어준다
+
