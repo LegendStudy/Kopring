@@ -157,3 +157,47 @@ class Lec11Main {
     }
 }
 ```
+
+## 12강 코틀린에서 object 키워드를 다루는 방법
+
+Java에서 static 클래스를 Kotlin에선 아래와 같이 `companion object`표현
+
+```kotlin
+companion object Factory : Log {
+    private const val MIN_AGE = 1
+    fun newBaby(name: String): Person {
+        return Person(name, MIN_AGE)
+    }
+
+    @JvmStatic
+    override fun log() {
+        println("나는 Person 클래스 동행 객체에요")
+    }
+}
+```
+
+외부에선 아래와 같이 적용 가능하며 마찬가지로 static import와 유사하게 가능
+
+```kotlin
+Person.newBaby("hello")
+```
+
+Java에서 컴패니언 사용하려면 @JvmStatic을 붙여야함
+
+### 싱글톤
+
+object 키워드 쓰면 끝
+
+### 익명클래스 구현시
+
+```kotlin
+moveSomething(object : Moveable {
+    override fun move() {
+        println("움직인다")
+    }
+
+    override fun fly() {
+        println("난다")
+    }
+})
+```
