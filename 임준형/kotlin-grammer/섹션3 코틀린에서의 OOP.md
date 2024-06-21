@@ -217,3 +217,42 @@ inner는,, 권장하니 않으니 알아보지도 말자
 ### Kotlin
 | 클래스 안의 클래스 | 바깥 클래스 참조 없음<br/> 권장되는 유형                    |
 |-----------------|----------------------------------------------|
+
+
+## 14강 코틀린에서 다양한 클래스를 다루는 방법
+
+### data class
+
+Kotlin에서 data 키워드를 붙여주면 Java에서 `toString`, `equals`, `hashCode`을 쓰는 것과 동일하다  
+
+사실상 namedQuery를 사용하면 Builder 또한 사용 가능
+
+### enum class
+
+Java와 Kotlin은 동일. 하지만 when을 쓰면 강력해짐
+
+### Java
+```java
+private static void handleCountry(JavaCountry country) {
+    if (country == JavaCountry.KOREA) {
+        // 로직 처리
+    }
+
+    if (country == JavaCountry.AMERICA) {
+        // 로직 처리
+    }
+}
+```
+
+### Kotlin
+```kotlin
+fun handleCountry(country: Country) {
+    when (country) {
+        KOREA -> TODO()
+        AMERICA -> TODO()
+    }
+}
+```
+
+else 처리를 하지 않아도됨. 이유는? 어차피 지금 Country에는 KOREA, AMERICA 밖에 없기 떄문에, 별도의 예외처리를 하지 않아도 됨.
+
