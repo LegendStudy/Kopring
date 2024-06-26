@@ -73,10 +73,57 @@ class.add2 4
 
 ```
 ### inline 함수
-함수가 호출되는 대신, 함수를 호출한 지점에 함수 본문을 그대로 복붙하고 싶은 경우
+함수가 호출되는 대신, 함수를 호출한 지점에 함수 본문을 그대로 복붙하고 싶은 경우'
 
 ### 지역함수
 
 함수 안에 함수를 선언할 수 있음
 
 하지만 depth가 깊어지고, 실무에서 잘안씀,  안쓰는게 좋음
+
+## 17강 코틀린에서 람다를 다루는 방법
+
+이름 없는 함수처럼 사용 가위는 
+
+```kotlin
+// 이름 없는 함수처럼 사용 가능, 원래는 fun isFruit()와 같음
+val isApple = fun(fruit: Fruit):Boolean {
+    return fru능it.name == "사과"
+}
+
+val isApple2 = { fruit: Fruit -> fruit.name == "사과"}
+```
+
+위는 반환 타입이 추론 가능하기 때문에 생략했지만 실제로는 
+```kotlin
+val isApple:(Fruit) -> Boolean = fun(fruit: Fruit):Boolean {
+    return fruit.name == "사과"
+}
+```
+
+이것과 같음. 
+
+`Kotlin`은 함수를 파라미터로 바로 넣을 수 있음 
+
+```kotlin
+fun main() {
+    val isApple: (Fruit) -> Boolean = fun(fruit: Fruit): Boolean {
+        return fruit.name == "사과"
+    }
+
+    filterFruits(fruits, isApple)
+}
+
+private fun filterFruits(
+    fruits: List<Fruit>, filter: (Fruit) -> Boolean
+): List<Fruit> {
+    val results = mutableListOf<Fruit>()
+    for (fruit in fruits) {
+        if (filter(fruit)) {
+            results.add(fruit)
+        }
+    }
+    return results
+}
+```
+
