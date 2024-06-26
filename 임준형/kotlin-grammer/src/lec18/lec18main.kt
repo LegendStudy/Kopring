@@ -14,7 +14,6 @@ private fun filterFruits(
     fruits.all {fruit -> fruit.name == "사과" }
     fruits.none {fruit -> fruit.name == "사과" }
     fruits.any {fruit -> fruit.name == "사과" }
-    fruits.sortedBy { fruit: Fruit -> fruit.price }
-
+    return fruits.sortedBy { fruit: Fruit -> fruit.price }
 }
 
