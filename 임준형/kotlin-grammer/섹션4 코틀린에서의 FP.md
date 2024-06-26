@@ -68,8 +68,8 @@ infix fun Int.add2(other: Int): Int {
     return this + orther
 }
 
-class.add2 4 
-위와 같이 사용 가능
+// class.add2 4 
+// 위와 같이 사용 가능
 
 ```
 ### inline 함수
@@ -127,3 +127,63 @@ private fun filterFruits(
 }
 ```
 
+## 18강 코틀린에서 컬렉션을 함수형으로 다루는 방법
+
+```kotlin
+private fun filterFruits(
+    fruits: List<Fruit>, filter: (Fruit) -> Boolean
+){
+    
+}
+```
+### filter
+메서드를 그대로 받아서 사용: `fruits.filter(filter)`
+
+### map
+형변환: `val map = fruits.map { fruit -> fruit.price }`
+
+### all
+전부 조건을 만족하면 true: `fruits.all {fruit -> fruit.name == "사과" }`
+
+### none
+전부 조건을 만족하지 않으면 true: `fruits.none {fruit -> fruit.name == "사과" }`
+
+### any
+하나라도 만족하면 true: `fruits.any {fruit -> fruit.name == "사과" }`
+
+### sortedBy
+원하는 조건대로 오름차순 정렬: `fruits.sortedBy { fruit: Fruit -> fruit.price }`
+
+### sortedByDescending
+원하는 조건대로 내림차순 정렬: `fruits.sortedByDescending { fruit: Fruit -> fruit.price }`
+
+### counted
+List의 size와 같음
+
+### distinctBy
+변형된 값을 기준으로 중복을 제거함
+
+```kotlin
+// 이름을 기준으로 중복을 제거하고 이름만 남기는 로직
+fruits.distinctBy { fruit -> fruit.name }
+    .map { fruit -> fruit.name }
+```
+
+### first
+첫번째 값을 가져옴(무조건 null이 아니어야함)
+
+### last
+마지막 값을 가져옴(무조건 null이 아니어야함)
+
+### groupBy
+
+과일이름 -> List<과일>
+Map 이 필요할 때
+
+`val map: Map<String, List<Fruit>> = fruits.groupBy { fruit -> fruit.name}`
+
+### associateBy
+과일 하나가 들어가는 경우. Map안에 List가 아닌, 단일 객체로 사용할 때 사용
+
+### flatMap, flatten
+Java와 같은 평탄화 작업
