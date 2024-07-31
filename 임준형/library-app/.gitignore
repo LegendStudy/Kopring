@@ -38,9 +38,10 @@ out/
 
 .env
 
-
-**/.gradle/**
-
-*.bin
-
-*.lock
+# 특정 파일들을 무시하도록 추가 설정
+.gradle/*.bin
+.gradle/*.lock
+.gradle/*.cache
+.gradle/*outputCleanup*
+.gradle/*history*
+.gradle/*fileHashes*
