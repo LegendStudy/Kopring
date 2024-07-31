@@ -2,8 +2,8 @@ package com.group.libraryapp.caculator
 
 import java.lang.IllegalArgumentException
 
-data class Calculator(
-    private var number: Int
+class Calculator(
+    var number: Int
 ) {
 
     fun add(operand: Int) {

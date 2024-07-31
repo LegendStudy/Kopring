@@ -38,3 +38,9 @@ out/
 
 .env
 
+
+**/.gradle/**
+
+*.bin
+
+*.lock
