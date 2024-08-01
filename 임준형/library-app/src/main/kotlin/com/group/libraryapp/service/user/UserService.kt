@@ -1,4 +1,4 @@
-package com.group.libraryapp.domain.service.user
+package com.group.libraryapp.service.user
 
 import com.group.libraryapp.domain.loanhistory.UserRepository
 import com.group.libraryapp.domain.user.User
