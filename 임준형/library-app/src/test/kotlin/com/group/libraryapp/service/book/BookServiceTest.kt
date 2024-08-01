@@ -6,7 +6,7 @@ import com.group.libraryapp.domain.book.BookType
 import com.group.libraryapp.domain.loanhistory.UserLoanHistory
 import com.group.libraryapp.domain.loanhistory.UserLoanHistoryRepository
 import com.group.libraryapp.domain.loanhistory.UserLoanStatus
-import com.group.libraryapp.domain.loanhistory.UserRepository
+import com.group.libraryapp.domain.user.UserRepository
 import com.group.libraryapp.domain.user.User
 import com.group.libraryapp.dto.book.request.BookLoanRequest
 import com.group.libraryapp.dto.book.request.BookRequest
