@@ -3,7 +3,7 @@ package com.group.libraryapp.service.book
 import com.group.libraryapp.domain.book.Book
 import com.group.libraryapp.domain.book.BookQuerydslRepository
 import com.group.libraryapp.domain.book.BookRepository
-import com.group.libraryapp.domain.loanhistory.UserLoanHistoryRepository
+import com.group.libraryapp.domain.loanhistory.UserLoanHistoryQuerydslRepository
 import com.group.libraryapp.domain.loanhistory.UserLoanStatus
 import com.group.libraryapp.domain.user.UserRepository
 import com.group.libraryapp.dto.book.request.BookLoanRequest
@@ -18,7 +18,7 @@ import org.springframework.transaction.annotation.Transactional
 class BookService(
     private val bookRepository: BookRepository,
     private val userRepository: UserRepository,
-    private val userLoanHistoryRepository: UserLoanHistoryRepository,
+    private val userLoanQuerydslHistoryRepository: UserLoanHistoryQuerydslRepository,
     private val bookQuerydslRepository: BookQuerydslRepository
 ) {
 
@@ -32,7 +32,7 @@ class BookService(
     fun loanBook(request: BookLoanRequest) {
         val book = bookRepository.findByName(request.bookName) ?: fail()
 
-        if (userLoanHistoryRepository.findByBookNameAndStatus(request.bookName, UserLoanStatus.LOANED) != null) {
+        if (userLoanQuerydslHistoryRepository.find(request.bookName, UserLoanStatus.LOANED) != null) {
             throw java.lang.IllegalArgumentException("진작 대출되어 있는 책입니다")
         }
 
@@ -48,7 +48,7 @@ class BookService(
 
     @Transactional(readOnly = true)
     fun countLoanedBook(): Int {
-        return userLoanHistoryRepository.countByStatus(UserLoanStatus.LOANED).toInt()
+        return userLoanQuerydslHistoryRepository.count(UserLoanStatus.LOANED).toInt()
     }
 
     @Transactional(readOnly = true)
