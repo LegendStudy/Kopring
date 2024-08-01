@@ -2,7 +2,8 @@ package com.group.libraryapp.domain.user;
 
 import static javax.persistence.GenerationType.IDENTITY;
 
-import com.group.libraryapp.domain.book.Book;
+import com.group.libraryapp.domain.Book;
+import com.group.libraryapp.domain.book.JavaBook;
 import com.group.libraryapp.domain.user.loanhistory.UserLoanHistory;
 import java.util.ArrayList;
 import java.util.List;
