@@ -1,6 +1,7 @@
 package com.group.libraryapp.service.book
 
 import com.group.libraryapp.domain.book.Book
+import com.group.libraryapp.domain.book.BookQuerydslRepository
 import com.group.libraryapp.domain.book.BookRepository
 import com.group.libraryapp.domain.loanhistory.UserLoanHistoryRepository
 import com.group.libraryapp.domain.loanhistory.UserLoanStatus
@@ -17,7 +18,8 @@ import org.springframework.transaction.annotation.Transactional
 class BookService(
     private val bookRepository: BookRepository,
     private val userRepository: UserRepository,
-    private val userLoanHistoryRepository: UserLoanHistoryRepository
+    private val userLoanHistoryRepository: UserLoanHistoryRepository,
+    private val bookQuerydslRepository: BookQuerydslRepository
 ) {
 
     @Transactional
@@ -51,6 +53,6 @@ class BookService(
 
     @Transactional(readOnly = true)
     fun getBookStatistics(): List<BookStatResponse> {
-        return bookRepository.getStats()
+        return bookQuerydslRepository.getStats()
     }
 }
